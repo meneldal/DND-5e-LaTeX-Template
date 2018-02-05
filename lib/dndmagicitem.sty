@@ -1,0 +1,11 @@
+\newcommand{\magicitemheader}[2]{
+  \subtitlesection{#1}, {#2}
+  \vspace{-1ex} % subtitlesection artefact; topsep also changes bottom spacing.
+  %\begin{description}[font=\normalfont\textbf,noitemsep,topsep=1ex,leftmargin=1em]
+  %\end{description}
+}
+
+\newenvironment{magicitem}[2]
+  {\spellheader{#1}{#2}}
+  % Environment encloses description.
+{\vspace{\baselineskip}}
