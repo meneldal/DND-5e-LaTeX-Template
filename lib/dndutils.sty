@@ -1,0 +1,48 @@
+% Utility command file
+
+\RequirePackage{fp}
+\RequirePackage{xstring}
+
+% Set attributes for further repeated use
+\newcommand{\SetSTR}[1]{\def \STR {#1}}
+\newcommand{\SetDEX}[1]{\def \DEX {#1}}
+\newcommand{\SetCON}[1]{\def \CON {#1}}
+\newcommand{\SetINT}[1]{\def \INT {#1}}
+\newcommand{\SetWIS}[1]{\def \WIS {#1}}
+\newcommand{\SetCHA}[1]{\def \CHA {#1}}
+
+\newcommand{\SetProficiency}[1]{\def \Proficiency {#1}}
+
+% Macro to print stats with autocomputed modifier
+% e.g. \stat{12} prints "12 (+1)"
+\newcommand{\stat}[1]{%
+	\FPeval{\mod}{(#1 - 10)/2}%
+	\FPifpos\mod%
+	\FPeval{\mod}{clip(trunc(mod,0))}#1\ (+\mod)%
+	\else%
+	\FPeval{\mod}{clip(abs(trunc(mod-0.5,0)))}#1\ (\(-\)\mod)%
+	\fi%
+}
+
+% Macro to print avarage dice based value
+% e.g. \dice{2d6+3} prints "10 (2d6 + 3)"
+\newcommand{\dice}[1]{%
+	\StrSubstitute{#1}{ }{}[\DiceArg]%				strip whitespaces
+	\StrCut{\DiceArg}{d}\DiceNum\DiceSides%			split string
+	\StrCut{\DiceSides}{+}\DiceSides\DiceAddMod%
+	\StrCut{\DiceSides}{-}\DiceSides\DiceSubMod%
+	\FPeval{\DiceAvg}{(\DiceSides+1)/2*\DiceNum}%	calculate avg roll	
+	\IfInteger{\DiceAddMod}{%
+		\FPadd{\DiceAvg}{\DiceAvg}{\DiceAddMod}%	add value
+		\def\DiceMod{ + \DiceAddMod}%
+	}{%
+		\IfInteger{\DiceSubMod}{%
+			\FPsub{\DiceAvg}{\DiceAvg}{\DiceSubMod}%	subtract value
+			\def\DiceMod{ \(-\) \DiceSubMod}%
+		}{%
+			\def\DiceMod{}%
+		}%
+	}%
+	\FPtrunc{\DiceAvg}{\DiceAvg}{0}%				round down
+	\FPprint{\DiceAvg\ (\DiceNum d\DiceSides\DiceMod)}
+}
