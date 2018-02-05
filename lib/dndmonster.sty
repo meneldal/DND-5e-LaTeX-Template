@@ -107,7 +107,7 @@
 %
 % Macros for use within the monster environment
 %
-\newkeycommand\basics[armorclass=0, hitpoints=0, speed=0]{%
+\newkeycommand\basics[armorclass=0, hitpoints=0, speed=0, proficiency=0, perception=0, initiative=0]{%
 	\begingroup
 		\unskip\color{titlered}
 		\begin{hangingpar}
@@ -119,6 +119,15 @@
 		\begin{hangingpar}
 			\textbf{\speedname} \commandkey{speed}
 		\end{hangingpar}%
+    		\begin{hangingpar}
+			\textbf{\proficiencyname} \commandkey{proficiency}
+		\end{hangingpar}%
+		\begin{hangingpar}
+			\textbf{\perceptionname} \commandkey{perception}
+		\end{hangingpar}%
+		\begin{hangingpar}
+			\textbf{\initname} \commandkey{initiative}
+		\end{hangingpar}%            
 	\endgroup%
 }
 
@@ -150,7 +159,12 @@
 						damagevulnerabilities=,
 						senses=---,
 						languages=---,
-						challenge=0]{%
+						challenge=,
+                        background=,
+                        personality=,
+                        ideals=,
+                        bonds=,
+                        flaws=]{%
 	\begingroup
 		\unskip\color{titlered}
 		\ifcommandkey{savingthrows}{%
@@ -177,6 +191,30 @@
 			\begin{hangingpar}
 				\textbf{\cimmname} \commandkey{conditionimmunities}
 			\end{hangingpar}}{}%
+        \ifcommandkey{challenge}{%
+       		\begin{hangingpar}
+                \textbf{\challengename} \crexp{\commandkey{challenge}}
+            \end{hangingpar}}{}%
+        \ifcommandkey{background}{%
+       		\begin{hangingpar}
+                \textbf{\backgroundname} \crexp{\commandkey{background}}
+            \end{hangingpar}}{}%
+        \ifcommandkey{personality}{%
+       		\begin{hangingpar}
+                \textbf{\personalityname} \crexp{\commandkey{personality}}
+            \end{hangingpar}}{}%
+        \ifcommandkey{ideals}{%
+       		\begin{hangingpar}
+                \textbf{\idealsname} \crexp{\commandkey{ideals}}
+            \end{hangingpar}}{}%
+        \ifcommandkey{bonds}{%
+       		\begin{hangingpar}
+                \textbf{\bondsname} \crexp{\commandkey{bonds}}
+            \end{hangingpar}}{}%
+        \ifcommandkey{flaws}{%
+       		\begin{hangingpar}
+                \textbf{\flawsname} \crexp{\commandkey{flaws}}
+            \end{hangingpar}}{}%
 		% These traits appear to always be present.
 		\begin{hangingpar}
 			\textbf{\sensesname} \commandkey{senses}
@@ -184,9 +222,6 @@
 		\begin{hangingpar}
 			\textbf{\languagesname} \commandkey{languages}
 		\end{hangingpar}
-		\begin{hangingpar}
-			\textbf{\challengename} \crexp{\commandkey{challenge}}
-		\end{hangingpar}%
 	\endgroup%
 }
 

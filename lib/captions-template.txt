@@ -37,4 +37,12 @@ vv ------ TEMPLATE ------ vv
   \def\sensesname{...}%
   \def\languagesname{...}%
   \def\challengename{...}%
+  \def\proficiencyname{...}%
+  \def\perceptionname{...}%
+  \def\backgroundname{...}%
+  \def\personalityname{...}%
+  \def\idealsname{...}%
+  \def\bondsname{...}%
+  \def\flawsname{...}% 
+  \def\initname{...}%   
 }
