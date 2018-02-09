@@ -1,9 +1,9 @@
-% DND 5e LaTeX Style File
+% wl 5e LaTeX Style File
 % Created by Evan Bergeron
 % Modified by Christopher Liu December 2015
 % Modified by Yannic Meyer Feb 2016
 
-\ProvidesPackage{dnd}[2017/10/13 v0.6.0 Template for D&D 5e material]
+\ProvidesPackage{wl}[2017/10/13 v0.6.0 Template for D&D 5e material]
 
 %
 % Prerequisite Packages
@@ -30,9 +30,9 @@
 \RequirePackage{xparse}
 
 
-% \dnd@deprecate{<command or environment>}{<version>}[<suggestion>]
-\DeclareDocumentCommand{\dnd@deprecate}{m m o}{%
-  \PackageWarning{dnd}{#1 is deprecated and will be removed in version #2.\IfNoValueF{#3}{ #3}}
+% \wl@deprecate{<command or environment>}{<version>}[<suggestion>]
+\DeclareDocumentCommand{\wl@deprecate}{m m o}{%
+  \PackageWarning{wl}{#1 is deprecated and will be removed in version #2.\IfNoValueF{#3}{ #3}}
 }
 
 %
@@ -59,28 +59,28 @@
     \toggletrue{bool-footer-scroll}
     \fi
   }{%
-    \PackageWarning{dnd}{\val\ is not a valid choice for bg and was ignored}
+    \PackageWarning{wl}{\val\ is not a valid choice for bg and was ignored}
   }
 }
 
 % Legacy bg option variants.
 \DeclareOptionX{bg-full}{%
-  \dnd@deprecate{bg-full}{0.7}[Use bg=full instead.]
+  \wl@deprecate{bg-full}{0.7}[Use bg=full instead.]
   \toggletrue{bool-bg}
   \toggletrue{bool-footer-scroll}
 }
 \DeclareOptionX{bg-none}{%
-  \dnd@deprecate{bg-none}{0.7}[Use bg=none instead.]
+  \wl@deprecate{bg-none}{0.7}[Use bg=none instead.]
   \togglefalse{bool-bg}
   \togglefalse{bool-footer-scroll}
 }
 \DeclareOptionX{bg-print}{%
-  \dnd@deprecate{bg-print}{0.7}[Use bg=print instead.]
+  \wl@deprecate{bg-print}{0.7}[Use bg=print instead.]
   \togglefalse{bool-bg}
   \toggletrue{bool-footer-scroll}
 }
-\DeclareOptionX{bg-a4}{\dnd@deprecate{bg-a4}{0.7}[Remove call to this package option.]}
-\DeclareOptionX{bg-letter}{\dnd@deprecate{bg-letter}{0.7}[Remove call to this package option.]}
+\DeclareOptionX{bg-a4}{\wl@deprecate{bg-a4}{0.7}[Remove call to this package option.]}
+\DeclareOptionX{bg-letter}{\wl@deprecate{bg-letter}{0.7}[Remove call to this package option.]}
 
 % Toggle justification (official books are flush left).
 \newtoggle{justified}
@@ -91,19 +91,19 @@
 \ProcessOptionsX\relax
 
 % Load other modules of this package
-\RequirePackage{lib/dndutils}     % \dndutils definition
-\RequirePackage{lib/dndcolors}    % color definitions
-\RequirePackage{lib/dndfonts}     % font definitions
-\RequirePackage{lib/dndcomment}   % \commentbox definition
-\RequirePackage{lib/dndheader}    % fancy headers and footers
-\RequirePackage{lib/dndmonster}   % \monsterbox definition
-\RequirePackage{lib/dndpaperbox}  % \paperbox definition
-\RequirePackage{lib/dndquote}     % \quotebox definition
-\RequirePackage{lib/dndsections}  % section styling
-\RequirePackage{lib/dndspell}     % \spell definition
-\RequirePackage{lib/dndmagicitem} % \magicitem definition
-\RequirePackage{lib/dndstrings}   % Load document strings
-\RequirePackage{lib/dndtable}     % \dndtable definition
+\RequirePackage{lib/wlutils}     % \wlutils definition
+\RequirePackage{lib/wlcolors}    % color definitions
+\RequirePackage{lib/wlfonts}     % font definitions
+\RequirePackage{lib/wlcomment}   % \commentbox definition
+\RequirePackage{lib/wlheader}    % fancy headers and footers
+\RequirePackage{lib/wlmonster}   % \monsterbox definition
+\RequirePackage{lib/wlpaperbox}  % \paperbox definition
+\RequirePackage{lib/wlquote}     % \quotebox definition
+\RequirePackage{lib/wlsections}  % section styling
+\RequirePackage{lib/wlspell}     % \spell definition
+\RequirePackage{lib/wlmagicitem} % \magicitem definition
+\RequirePackage{lib/wlstrings}   % Load document strings
+\RequirePackage{lib/wltable}     % \wltable definition
 
 
 % Set paragraph and line spacing
@@ -125,7 +125,7 @@
 
 % Font environment
 \newenvironment{lmss}{%
-  \dnd@deprecate{lmss}{0.7}
+  \wl@deprecate{lmss}{0.7}
   \fontfamily{lmss}\selectfont
   }{}
 
@@ -137,7 +137,7 @@
 \setitemize{noitemsep,topsep=0.5ex}
 \renewcommand{\labelitemi}{\raisebox{0.25ex}{\tiny{\( \bullet \)}}}
 
-% Fancy DnD 5e-style hline
+% Fancy wl 5e-style hline
 \renewcommand{\hline}{
   \noindent
   \begin{tikzpicture}[]

@@ -1,5 +1,5 @@
 To add captions for a new language, say French:
-	1. Copy the template below into dndstrings-captions.sty
+	1. Copy the template below into wlstrings-captions.sty
 	2. Substitute the <language> token with the 
 	   language name:
 

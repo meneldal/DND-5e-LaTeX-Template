@@ -1,6 +1,6 @@
 % Monster environment sty file
 
-\RequirePackage{lib/dndutils}
+\RequirePackage{lib/wlutils}
 
 % Monster box made to look like the Monster Manual NPC definitions
 \newtcolorbox{monsterboxnobg}[2][]{
@@ -15,8 +15,8 @@
 	arc=0mm,
 	opacityback=0,
 	colframe=titlered,
-	fonttitle=\dnd@StatBlockTitleFont\Large,
-	fontupper=\dnd@StatBlockBodyFont,
+	fonttitle=\wl@StatBlockTitleFont\Large,
+	fontupper=\wl@StatBlockBodyFont,
 	title=#2,
 	coltitle=titlered,
 	#1
@@ -44,9 +44,9 @@
 		colback=statblockbg,
 		colbacktitle=statblockbg,
 		colframe=titlered,
-		fonttitle=\dnd@StatBlockTitleFont\Large,
+		fonttitle=\wl@StatBlockTitleFont\Large,
 		coltitle=titlered,
-		fontupper=\dnd@StatBlockBodyFont,
+		fontupper=\wl@StatBlockBodyFont,
 		title=#2,
 		#1
 	}
@@ -61,7 +61,7 @@
 \newcommand{\monstersection}[1]{
 	\begingroup
 		\par\medskip\color{titlered}
-		\dnd@StatBlockSubtitleFont\large #1 \vspace{3pt}
+		\wl@StatBlockSubtitleFont\large #1 \vspace{3pt}
 		\titleline{\titlerule[0.6pt]}
 		\vspace{3pt}
 	\endgroup
