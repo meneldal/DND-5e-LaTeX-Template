@@ -1,0 +1,125 @@
+\newcommand{\classintro}[5]{
+\section{Class Overview}
+\begin{multicols}{2}
+\subsection{Stat Bonus}
+#2
+\subsection{Bonus Ability}
+\textbf{#3}\\
+#4
+\end{multicols}
+\subsection{#1 Paths Available}
+\begin{wltable}[lX]<#1 Paths Available><tab:#1pathslist><
+Path & Description>
+#5
+\end{wltable}
+}
+
+\def\IfEmptyTF#1{%
+  \if\relax\detokenize{#1}\relax
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi}
+
+
+\newcommand{\pathheader}[5]{
+  \section{#1}
+  \begin{multicols}{2}
+  \subsection{Key Stats:} 
+  #2
+  \subsection{Description:} 
+  #3
+  \subsection{Role:} 
+  #4
+  \IfEmptyTF{#5}{}{
+  \subsection{Mechanics:}
+  #5
+  }
+  \subsection{\skillsname}
+}
+%\newcommand\skilldescription{}
+\newcounter{y}
+\newcounter{x}[y]
+\newcounter{s}[y]
+\newarray\skills
+\newarray\spells
+
+\NewDocumentCommand\skilldescription{smoD<>{Meaning}moD<>{Type}mm}{
+  \IfBooleanTF {#1} {}{
+    \subsubsection*{#2}
+    \vspace{-1ex} % subtitlesection artefact; topsep also changes bottom spacing.
+    \begin{description}[font=\normalfont\textbf,noitemsep,topsep=1ex,leftmargin=1em]
+      \IfNoValueTF{#3}{}
+        {\item[#4:] #3}
+      \item[Cost:] #5
+      \IfNoValueTF{#6}{}
+        {\item[#7:] #6}
+      \item[Description:] #8
+  \end{description}
+  }
+  \addtocounter{x}{1}
+  \skills(\thex)= {#2 & #5 \IfNoValueTF{#3}{}{& #3} \IfNoValueTF{#6}{}{& #6}& #9 }
+  }
+  
+\NewDocumentCommand\spelldescription{mmoD<>{Type}oD<>{AP Cost (non-favored)}mm}{
+  \subsubsection*{#1}
+  \vspace{-1ex} % subtitlesection artefact; topsep also changes bottom spacing.
+  \begin{description}[font=\normalfont\textbf,noitemsep,topsep=1ex,leftmargin=1em]
+  \item[Cost:] #2
+    \IfNoValueTF{#3}{}
+    {\item[#4:] #3}
+    \IfNoValueTF{#5}{}
+    {\item[#6:] #5}
+    \item[Description:] #7
+  \end{description}
+  \addtocounter{s}{1}
+  \spells(\thes)= {#1 & #2 \IfNoValueTF{#3}{}{& #3} \IfNoValueTF{#5}{}{& #5}& #8 }
+  }
+  
+%pathname tablespec counter arrayname headers tablename
+\NewDocumentCommand\pathtable{mmmmoo}{
+  \let\ListSkills\empty 
+  \begingroup 
+    \expandafter\let\csname #4\endcsname\relax
+    \let\\\relax 
+    \multido{\iSkill=1+1}{\value{#3}}{% 
+      \xdef\ListSkills{\ListSkills 
+        \csname #4\endcsname(\iSkill) \\ }} 
+  \endgroup
+  \expandafter\begin{wllongtable}[#2]<#1 \ \IfNoValueTF{#6}{Skills}{#6}><
+  tab:#1\IfNoValueTF{#6}{Skills}{#6}><\IfNoValueTF{#5}
+    {Ability & Cost & Description}
+    {Ability & Cost & #5 & Description}\\>
+    \ListSkills
+  \end{wllongtable}
+}
+
+%pathname keyStats pathDescription role keyMechanics tableFormat tableHeader
+\NewDocumentEnvironment{path}{m m m m O{} O{X[-1]cX[-2]} o}{
+  \pathheader{#1}{#2}{#3}{#4}{#5}
+}
+{
+  \end{multicols}
+  \subsection{Table}
+  \pathtable{#1}{#6}{x}{skills}[#7]%skills table
+  \clearpage
+  \stepcounter{y}
+}
+
+
+\NewDocumentEnvironment{pathele}{m m m m O{} O{X[-1]cX[-2]} d<>}{
+  \pathheader{#1}{#2}{#3}{#4}{#5}
+}
+{
+  \end{multicols}
+  \subsection{Tables}
+  \pathtable{#1}{#6}{x}{skills}%skills table
+  \IfNoValueTF{#7}%test for second table
+  {}
+  {
+  \pathtable{#1}{#7}{s}{spells}[Type &AP Cost][Spells]%spells table
+  }
+  
+\clearpage
+\stepcounter{y}
+}
