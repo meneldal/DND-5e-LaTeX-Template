@@ -7,29 +7,46 @@
 
 % Centered Column
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
+\setlength{\LTpre}{0pt}\setlength{\LTpost}{-10pt}
 
 % Table Environment
-\NewDocumentEnvironment{wltable}{O{XX} O{tablecolor}}{%
-    \par\vspace*{8pt}
-    \noindent
-    \wl@TableBodyFont
-    \rowcolors{1}{}{#2}
-    \tabularx{\linewidth}{#1}
-  }{%
-    \endtabularx
-    \vspace{8pt plus 1pt}
-    \noindent
+\NewDocumentEnvironment{wltable}{O{XX} O{tablecolor} d<>d<>d<>d<>o}{%
+	\par\vspace*{8pt}
+	\noindent
+	\wl@TableBodyFont
+	\rowcolors{1}{}{#2}
+	\setlength{\tabulinesep}{3pt}
+	\setlength{\topsep}{\baselineskip}
+	\IfNoValueTF{#6}{}{\needspace{#6\baselineskip}}
+	\begin{tabu} {#1}
+	\IfNoValueTF{#5}{}{\rowfont\bfseries #5 \\}
+	}{%
+	\end{tabu}
+	\IfNoValueTF{#3}{}
+		{\captionof{table}{#3}
+		\label{#4}}
+	\penalty-200
+	\vspace{8pt}
+	\penalty-500
   }
-
-\newenvironment{wlitemtable}[1][XX]{%
-    \wl@deprecate{wlitemtable}{0.7}[Set tablecolor and use wltable instead.]
-    \par\vspace*{8pt}
-    \noindent
-    \wl@TableBodyFont
-    \rowcolors{1}{}{DmgCoral}
-    \tabularx{\linewidth}{#1}
-  }{%
-    \endtabularx
-    \vspace{8pt plus 1pt}
-    \noindent
-  }
+  
+\NewDocumentEnvironment{wllongtable}{O{XX} O{tablecolor} d<>d<>d<>}{%
+	\par\vspace*{8pt}
+	\noindent
+	\wl@TableBodyFont
+	\rowcolors{1}{}{#2}
+	\setlength{\tabulinesep}{3pt}
+	\setlength{\topsep}{\baselineskip}
+	\captionsetup{skip=0pt}
+	\begin{longtabu} to \textwidth {#1}
+	\IfNoValueTF{#5}{}{\rowfont[j]\bfseries #5 \endhead}
+	\IfNoValueTF{#3}{}{
+	test\kill
+	\caption{ #3}\endlastfoot}
+	}{%
+	\end{longtabu}
+	\label{#4}
+	\penalty-200
+	\vspace{8pt}
+	\penalty-500
+}
