@@ -20,6 +20,8 @@
 \RequirePackage{hang}
 \RequirePackage{array}
 \RequirePackage{tabularx}
+\RequirePackage{longtable}
+\RequirePackage{tabu}
 \RequirePackage{tikz}
 \RequirePackage{keycommand}
 \RequirePackage[most]{tcolorbox}  % used for some boxes
@@ -28,6 +30,13 @@
 \RequirePackage{ragged2e}
 \RequirePackage{xkeyval}
 \RequirePackage{xparse}
+\RequirePackage{calc}
+\RequirePackage{arrayjob}
+\RequirePackage{multido}
+\RequirePackage{multicol}
+\RequirePackage{wrapfig}
+\RequirePackage[tableposition=bottom]{caption}
+\RequirePackage{fmtcount} %used to format ranks
 
 
 % \wl@deprecate{<command or environment>}{<version>}[<suggestion>]
@@ -91,19 +100,21 @@
 \ProcessOptionsX\relax
 
 % Load other modules of this package
-\RequirePackage{lib/wlutils}     % \wlutils definition
-\RequirePackage{lib/wlcolors}    % color definitions
-\RequirePackage{lib/wlfonts}     % font definitions
-\RequirePackage{lib/wlcomment}   % \commentbox definition
-\RequirePackage{lib/wlheader}    % fancy headers and footers
-\RequirePackage{lib/wlmonster}   % \monsterbox definition
-\RequirePackage{lib/wlpaperbox}  % \paperbox definition
-\RequirePackage{lib/wlquote}     % \quotebox definition
-\RequirePackage{lib/wlsections}  % section styling
-\RequirePackage{lib/wlspell}     % \spell definition
-\RequirePackage{lib/wlmagicitem} % \magicitem definition
-\RequirePackage{lib/wlstrings}   % Load document strings
-\RequirePackage{lib/wltable}     % \wltable definition
+\RequirePackage{lib/wlutils}      % \wlutils definition
+\RequirePackage{lib/wlcolors}     % color definitions
+\RequirePackage{lib/wlfonts}      % font definitions
+\RequirePackage{lib/wlcomment}    % \commentbox definition
+\RequirePackage{lib/wlheader}     % fancy headers and footers
+\RequirePackage{lib/wlmonster}    % \monsterbox definition
+\RequirePackage{lib/wlpaperbox}   % \paperbox definition
+\RequirePackage{lib/wlquote}      % \quotebox definition
+\RequirePackage{lib/wlsections}   % section styling
+\RequirePackage{lib/wlspell}      % \spell definition
+\RequirePackage{lib/wlpath}       % \path definition
+\RequirePackage{lib/wlmagicitem}  % \magicitem definition
+\RequirePackage{lib/wlstrings}    % Load document strings
+\RequirePackage{lib/wltable}      % \wltable definition
+\RequirePackage{lib/wldescription}% \wldescription definition
 
 
 % Set paragraph and line spacing
@@ -114,7 +125,7 @@
 \hyphenpenalty=1000  % Fewer hyphens
 
 % Set left justification if not justified
-\nottoggle{justified}{\RaggedRight}
+%\nottoggle{justified}{\RaggedRight}
 
 %
 % Style Parameters
