@@ -1,13 +1,17 @@
 \RequirePackage[titles]{tocloft}
 \RequirePackage[toc]{multitoc}
+\RequirePackage{needspace}
 \RequirePackage{titlesec}	% Used to adjust (sub)section formatting
 
 %Remove Numbering (If you want Numbering set secnumdepth to the appropriate depth)
-\setcounter{secnumdepth}{-1}
+\setcounter{secnumdepth}{1}
 
 % Chapter
 \titleformat{\chapter}
-{\color{titlered}\wl@TitleFont\Huge}{\thechapter\quad}{0pt}{}
+{\color{titlered}\wl@TitleFont\Huge}
+{Chapter \thechapter\quad}
+{0pt}
+{}
 
 \titlespacing*{\chapter}{0pt}{0pt}{20pt}
 
@@ -15,22 +19,23 @@
 
 % Section
 \titleformat{\section}
-{\color{titlered}\wl@TitleFont\LARGE}{\thesection\quad}{0pt}{}
+{\needspace{5\baselineskip}\color{titlered}\wl@TitleFont\LARGE}{\thesection\quad}{0pt}{}
+[\titleline{\color{titlegold}\titlerule[4pt]}]
 
 % Subsection
 \titleformat{\subsection}
-{\color{titlered}\wl@TitleFont\Large}{\thesubsection\quad}{0pt}{}
+{\needspace{4\baselineskip}\color{titlered}\wl@TitleFont\Large}{\thesubsection\quad}{0pt}{}
 [\titleline{\color{titlegold}\titlerule[1pt]}]
 
 % Subsubsection
 \titleformat{\subsubsection}
-{\color{titlered}\wl@TitleFont\large}{\thesubsubsection\quad}{0pt}{}[]
+{\needspace{2\baselineskip}\color{titlered}\wl@TitleFont\large}{\thesubsubsection\quad}{0pt}{}[]
 
 % Paragraph
 \titleformat{\paragraph}[runin]
 {\normalfont\normalsize\bfseries\slshape}{\theparagraph\quad}{0pt}{}[.]
 \titlespacing*{\paragraph}
-{0pt}{\parskip}{\wordsep}
+{4pt}{\parskip}{\wordsep}
 
 % Subparagraph
 \titleformat{\subparagraph}[runin]
@@ -43,3 +48,5 @@
 	\subsubsection{#1}\vspace{-1ex}
 	\textit{#2}\vspace{1ex}\par
 	} 
+
+\newcommand{\note}[2][NOTE:]{\textbf{#1} #2}
