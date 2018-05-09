@@ -1,0 +1,68 @@
+\chapter{Races}
+\begin{multicols}{2}
+\section{Race Introduction}
+A character’s race affects their physical appearance. In addition, the race you choose will dictate which mechanical benefits you will receive. These are listed below.
+\subsection{Stat Bonuses}
+All characters gain +2 to one stat, and +1 to a second stat at the start based on their race. Which stats the bonuses apply to are dictated by the race you choose to play as.
+\subsection{Free Ability}
+An ability or collection of abilities a character a character receives during character creation. The race you choose to play as determines which free abilities you receive.
+\subsection{Racial Path}
+Lists of abilities based on race that you can choose to purchase that are tied to a specific race. These function similarly to class abilities.
+\end{multicols}
+\subsection{The Races}
+\begin{wltable}[Xl]<Races List><tab:racelist><
+Race & Description>
+Asura & Spiritually sensitive Hindu deities with many arms.\\
+Cait Sith & Talking, bipedal house cats that can transform and control corpses.\\
+Dryad & Greek tree guardians with plant powers.\\
+Dullahan & Celtic messengers of death with detachable heads.\\
+Dvergr & Norse dwarves that can turn to stone and sense treasure.\\
+Fairy & Tiny, winged nature sprites.\\
+Gloop & Slime creatures with acidic bodies capable of mimicking shapes.\\
+Human & Stubborn apes with short attention spans and big appetites.\\
+Jötunn & Norse giants that can grow large and have tough skin.\\
+Merfolk & Half-fish, half-humans with powerful voices.\\
+Naga & Hindu snake-men with venomous fangs and powerful immune systems.\\
+Orc & Vicious predators with animalistic senses and a mean bite.\\
+Síde & Celtic elves that can shrink and teleport.\\
+Tengu & Japanese wind gods with crow’s wings.\\
+Ungoloth & Alien creatures that are half-spider, half-human.\\
+\end{wltable}
+\pagebreak
+
+\newcommand{\racedescription}[8]{
+\section{#1}
+\begin{quotebox}
+#2
+\ifthenelse{\equal{#3}{}}{}
+{\begin{flushright}-#3\end{flushright}}
+
+
+\end{quotebox}
+\begin{multicols}{2}
+\subsection{Lore}
+#4
+\subsection{Physiology}
+#5
+\subsection{Habitat}
+#6
+\subsection{History}
+#7
+\subsection{Suggested Paths}
+\begin{itemize}
+#8
+\end{itemize}
+}
+\newcommand{\raceabilities}[5]{
+\subsection{Stat Bonuses}
+#2
+\subsection{Free Ability}
+\textbf{#3}\\
+#4
+\end{multicols}
+\subsection{Racial Path Abilities}
+\begin{wltable}[llX]<#1 Abilities><tab:#1Abilities><
+Ability & Cost & Description>
+#5
+\end{wltable}
+}

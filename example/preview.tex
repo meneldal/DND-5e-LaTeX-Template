@@ -1,0 +1,111 @@
+% Changing book to article will make the footers match on each page,
+% rather than alternate every other.
+%
+% Note that the article class does not have chapters.
+\documentclass[letterpaper,10pt,twoside]{book}
+
+% Use babel or polyglossia to automatically redefine macros for terms
+% Armor Class, Level, etc...
+% Default output is in English; captions are located in lib/wlstring-captions.sty.
+% If no captions exist for a language, English will be used.
+%1. To load a language with babel:
+%	\usepackage[<lang>]{babel}
+%2. To load a language with polyglossia:
+%	\usepackage{polyglossia}
+%	\setdefaultlanguage{<lang>}
+\usepackage[english]{babel}
+\let\latinencoding\relax
+\errorcontextlines 10000
+%usepackage[italian]{babel}
+% For further options (multilanguage documents, hypenations, language environments...)
+% please refer to babel/polyglossia's documentation.
+
+%\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+\newfontfamily\jpfont{IPAexMincho}
+\newfontfamily\specialchar{Junicode}
+\usepackage{wl}
+\usepackage{hyperref}
+
+\lstset{%
+  basicstyle=\ttfamily,
+  language=[LaTeX]{TeX},
+}
+
+% Start document
+\begin{document}
+\chapter*{DISCLAIMER}
+
+This is a sample version of the Warp Lords™ RPG. Formatting, images, and text may not reflect the final product. Only contains the minimum amount of info needed to play plus a small selection of the final character options.\footnote{This is an early version preview. It might be incorrec{\emph k}t and have bad format\hspace{-0.5ex}ting}
+
+For more info, visit our website at \href{www.banditgang.com}{www.banditgang.com} or email us at \href{mailto:warplords@gmail.com}{warplords@gmail.com}
+
+\input{basics}
+%
+\input{races/intro}
+\input{races/asura}
+%\input{races/caithsith}
+%\input{races/dryad}
+%\input{races/dullahan}
+%\input{races/dvergr}
+%\input{races/fairy}
+%\input{races/gloop}
+\input{races/human}
+%\input{races/jotunn}
+%\input{races/merfolk}
+\input{races/naga}
+%\input{races/orc}
+\input{races/sidhe}
+\input{races/tengu}
+%\input{races/ungoloth}
+%
+\chapter{Mage}
+\input{mage/mageintro}
+\input{mage/bard}
+\input{mage/elementalRedux}
+\input{priest/wildmagictable}
+%\input{mage/healer}
+%\input{mage/necromancer}
+%\input{mage/presti}
+%\input{mage/runes}
+%\input{mage/summoner}
+%\input{mage/witch}
+%
+\chapter{Priest}
+\input{priest/priestintro}
+%\input{priest/bokor}
+%\input{priest/cultist}
+%\input{priest/druid}
+%\input{priest/inquisitor}
+\input{priest/kannagi}
+%\input{priest/pagan}
+\input{priest/paladin}
+%\input{priest/prophet}
+%\input{priest/skinwalker}
+%
+\chapter{Scholar}
+\input{scholar/scholarintro}
+%\input{scholar/alchemist}
+%\input{scholar/artisan}
+%\input{scholar/engineer}
+\input{scholar/gambler}
+%\input{scholar/librarian}
+%\input{scholar/merchant}
+\input{scholar/physicist}
+%\input{scholar/psychic}
+%\input{scholar/socialite}
+%
+\chapter{Warrior}
+\input{warrior/warriorintro}
+\input{warrior/duelist}
+%\input{warrior/guardian}
+\input{warrior/martialartist}
+%\input{warrior/quartermaster}
+%\input{warrior/ranger}
+%\input{warrior/reiki}
+%\input{warrior/rogue}
+%\input{warrior/sniper}
+%\input{warrior/tactician}
+
+\input{combat}
+\end{document}
