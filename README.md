@@ -2,15 +2,11 @@
 
 [![Latest release](https://img.shields.io/github/release/evanbergeron/DND-5e-LaTeX-Template/all.svg)](https://github.com/evanbergeron/DND-5e-LaTeX-Template/releases/latest)
 
-This is a LaTeX template for typesetting documents in the style of the *Dungeons & Dragons* 5th Edition (D&D 5e) books.
+This is a LaTeX template for typesetting documents in the style of the *Warp Lords* books.
 
 ## Features
 
-* Color schemes and fonts are close to the core books.
-* TeX Live includes the default fonts.
-* Compiles with `pdflatex`.
-
-![Preview](scrot.jpg)
+* Compiles with `Xelatex` (for extended font support)
 
 ## Installation
 
@@ -29,10 +25,10 @@ LaTeX will find the package automatically.
     ```sh
     mkdir "$(kpsewhich -var-value TEXMFHOME)/tex/latex/"
     ```
-2. Download the [latest release](https://github.com/evanbergeron/DND-5e-LaTeX-Template/releases/latest) and extract it in `$TEXMFHOME/tex/latex/`.
+2. Download the [latest release](https://github.com/meneldal/Warp-Lords-LaTeX-Template/releases/latest) and extract it in `$TEXMFHOME/tex/latex/`.
 
     ```sh
-    wget https://github.com/evanbergeron/DND-5e-LaTeX-Template/archive/v0.6.0.zip
+    wget not.available.right.now
     unzip -d "$(kpsewhich -var-value TEXMFHOME)/tex/latex/" v0.6.0.zip
     cd "$(kpsewhich -var-value TEXMFHOME)/tex/latex/"
     mv DND-5e-LaTeX-Template-0.6.0 dnd
@@ -41,7 +37,7 @@ LaTeX will find the package automatically.
     Alternatively, clone the repo to the same location:
 
     ```sh
-    git clone https://github.com/evanbergeron/DND-5e-LaTeX-Template.git "$(kpsewhich -var-value TEXMFHOME)/tex/latex/dnd"
+    git clone https://github.com/meneldal/Warp-Lords-LaTeX-Template.git "$(kpsewhich -var-value TEXMFHOME)/tex/latex/dnd"
     ```
 
 ### Project install using `TEXINPUTS`
@@ -50,7 +46,7 @@ You can also clone a copy of the repository to each LaTeX project. For example, 
 
 ```sh
 mkdir lib/
-git clone https://github.com/evanbergeron/DND-5e-LaTeX-Template.git lib/dnd
+git clone https://github.com/meneldal/Warp-Lords-LaTeX-Template lib/wl
 ```
 
 LaTeX will not find the template automatically. Set `TEXINPUTS` when compiling your project to locate the package:
