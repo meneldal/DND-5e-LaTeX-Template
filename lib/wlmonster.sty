@@ -71,122 +71,37 @@
 	\smallskip\emph{\textbf{#1.}}}{\\}
 
 %
-% Macros for use within the monster environment
-%
-\newkeycommand\basics[armorclass=0, hitpoints=0, speed=0, proficiency=0, perception=0, initiative=0]{%
-	\begingroup
-		\unskip\color{titlered}
-		\begin{hangingpar}
-			\textbf{\armorclassname} \commandkey{armorclass}
-		\end{hangingpar}
-		\begin{hangingpar}
-			\textbf{\hitpointsname} \commandkey{hitpoints}
-		\end{hangingpar}
-		\begin{hangingpar}
-			\textbf{\speedname} \commandkey{speed}
-		\end{hangingpar}%
-    		\begin{hangingpar}
-			\textbf{\proficiencyname} \commandkey{proficiency}
-		\end{hangingpar}%
-		\begin{hangingpar}
-			\textbf{\perceptionname} \commandkey{perception}
-		\end{hangingpar}%
-		\begin{hangingpar}
-			\textbf{\initname} \commandkey{initiative}
-		\end{hangingpar}%            
-	\endgroup%
-}
+
 
 % Taubular enviornment for stats-block
-\newkeycommand\stats[STR=\stat{10},
-                        DEX=\stat{10},
-                        CON=\stat{10},
-                        INT=\stat{10},
-                        WIS=\stat{10},
-                        CHA=\stat{10}]{%
-    \begingroup
-		\small\centering\color{titlered}
-		\resizebox{\linewidth}{\height}{%
-			\begin{tabular}{cccccc}
-				\rule{0pt}{3.7mm} %adds space between hline and table
-				\textbf{\strstatname} & \textbf{\dexstatname} & \textbf{\constatname} & \textbf{\intstatname} & \textbf{\wisstatname} & \textbf{\chastatname}\\
-				\commandkey{STR} & \commandkey{DEX} & \commandkey{CON} & \commandkey{INT} & \commandkey{WIS} & \commandkey{CHA}
-			\end{tabular}
-		}%
-		\\[0.4em] %adds space after table
-    \endgroup
+\newkeycommand\stats[
+	STR=2,
+	VIT=2,
+	AGI=2,
+	INT=2,
+	CHA=2,
+	STY=2,
+	WIL=2,
+	SEN=2,
+	MAG=2,
+	LUC=2]{%
+
+	\begin{tabularx}{\linewidth}{XXXX}
+\textbf{\strstat} & \stat{\commandkey{STR}} & 
+\textbf{\vitstat} & \stat{\commandkey{VIT}} \\
+\textbf{\agistat} & \stat{\commandkey{AGI}} & 
+\textbf{\intstat} & \stat{\commandkey{INT}} \\
+\textbf{\chastat} & \stat{\commandkey{CHA}} & 
+\textbf{\stystat} & \stat{\commandkey{STY}} \\
+\textbf{\wilstat} & \stat{\commandkey{WIL}} & 
+\textbf{\senstat} & \stat{\commandkey{SEN}} \\
+\textbf{\magstat} & \stat{\commandkey{MAG}} & 
+\textbf{\lucstat} & \stat{\commandkey{LUC}} \\
+	\end{tabularx}
+
 }
 
-\newkeycommand\details[skills=,
-						damageimmunities=,
-						savingthrows=,
-						conditionimmunities=,
-						damageresistances=,
-						damagevulnerabilities=,
-						senses=---,
-						languages=---,
-						challenge=,
-                        background=,
-                        personality=,
-                        ideals=,
-                        bonds=,
-                        flaws=]{%
-	\begingroup
-		\unskip\color{titlered}
-		\ifcommandkey{savingthrows}{%
-			\begin{hangingpar}
-			\textbf{\savesname} \commandkey{savingthrows}
-			\end{hangingpar}}{}%
-		\ifcommandkey{skills}{%
-			\begin{hangingpar}
-				\textbf{\skillsname} \commandkey{skills}
-			\end{hangingpar}}{}%
-		\ifcommandkey{damagevulnerabilities}{%
-			\begin{hangingpar}
-				\textbf{\dvulname} \commandkey{damagevulnerabilities}
-			\end{hangingpar}}{}%
-		\ifcommandkey{damageresistances}{%
-			\begin{hangingpar}
-				\textbf{\dresname} \commandkey{damageresistances}
-			\end{hangingpar}}{}%
-		\ifcommandkey{damageimmunities}{%
-			\begin{hangingpar}
-				\textbf{\dimmname} \commandkey{damageimmunities}
-			\end{hangingpar}}{}%
-		\ifcommandkey{conditionimmunities}{%
-			\begin{hangingpar}
-				\textbf{\cimmname} \commandkey{conditionimmunities}
-			\end{hangingpar}}{}%
-        \ifcommandkey{challenge}{%
-       		\begin{hangingpar}
-                \textbf{\challengename} \crexp{\commandkey{challenge}}
-            \end{hangingpar}}{}%
-        \ifcommandkey{background}{%
-       		\begin{hangingpar}
-                \textbf{\backgroundname} \crexp{\commandkey{background}}
-            \end{hangingpar}}{}%
-        \ifcommandkey{personality}{%
-       		\begin{hangingpar}
-                \textbf{\personalityname} \crexp{\commandkey{personality}}
-            \end{hangingpar}}{}%
-        \ifcommandkey{ideals}{%
-       		\begin{hangingpar}
-                \textbf{\idealsname} \crexp{\commandkey{ideals}}
-            \end{hangingpar}}{}%
-        \ifcommandkey{bonds}{%
-       		\begin{hangingpar}
-                \textbf{\bondsname} \crexp{\commandkey{bonds}}
-            \end{hangingpar}}{}%
-        \ifcommandkey{flaws}{%
-       		\begin{hangingpar}
-                \textbf{\flawsname} \crexp{\commandkey{flaws}}
-            \end{hangingpar}}{}%
-		% These traits appear to always be present.
-		\begin{hangingpar}
-			\textbf{\sensesname} \commandkey{senses}
-		\end{hangingpar}
-		\begin{hangingpar}
-			\textbf{\languagesname} \commandkey{languages}
-		\end{hangingpar}
-	\endgroup%
-}
+\newcommand{\attacks}{\monstersection{\attacksname}}
+\newcommand{\defense}{\monstersection{\defensename}}
+
+\newcommand{\shortskill}[2]{\textbf{#1}: #2}
