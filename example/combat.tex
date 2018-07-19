@@ -9,11 +9,38 @@ If there's one thing adventurers love to do, it's kill things for fun and profit
 \item If the attacker succeeds, the defender takes 1 wound. They may take more if the attacker uses a skill that states the defender takes more wounds.
 \end{itemize}
 \subsection{Wounds}
-Wounds are taken directly to your stats. Wounds are recorded under the temp stat area. Ability costs are also treated as wounds.
+\begin{itemize}
+\item Wounds are taken directly to your stats. Wounds are recorded under the temp stat area.\\
+\item All attacks damage Vitality by default. The defender can choose to take wounds to their Strength or Agility if an attack would otherwise kill them.\\
+\item Taking wounds to a stat LOWERS its effective rank for the purposes of using that stat. This means if you use an ability with a damaged stat, you may be rolling fewer dice or gain a smaller bonus than you would if the stat were not damaged.\\
+\item \note{Some skills specifically target other stats.}
+\end{itemize}
 
-All attacks damage Vitality by default. The defender can choose to take wounds to their Strength or Agility if an attack would otherwise kill them.
+\subsection{Ability Costs}
+\begin{itemize}
+\item Some skills require you pay an ability cost to activate it. Each stat has an ability pool tracked separately from wounds for the purposes of activating abilities.
+\item Once you expend your activation pool for a particular stat, you CANNOT use any more abilities that require that stat for activation until the pool is reset.
+\item Spending your ability pool DOES NOT affect your stat's effective rank for the purposes of using abilities. This means if your stat is undamaged, you may use it at full strength, even if you've expended your ability pool.
+\end{itemize}
 
-\note{Some skills specifically target other stats.}
+\subsection{When Stats Reach 0}
+If one of your stats reaches 0, you are removed from action. How this happens depends on the stat and GM discretion.
+\begin{wltable}[X[-1]X]<Effect from stats reduced to 0><tab:statfail>
+\\
+STR & Your muscles give out and you lack the strength to move.\\
+VIT & You die.\\
+AGI & You lack the coordination to move without injuring or potentially killing yourself.\\
+INT & You're in a coma or temporarily brain dead.\\
+CHA & You cannot communicate in any fashion and are lost in your thoughts.\\
+STY & The fashion police may come and arrest you.\\
+WIL & You lose the will to live and can do little more than sit there with a thousand yard stare.\\
+SEN & You cannot perceive the world around you in any capacity.\\
+MAG & Your spirit is expended and you slip into a coma.\\
+LUC & You cannot take an action without suffering a catastrophic accident.\\
+\end{wltable}
+
+\subsection{Healing and the Ability Pool}
+Whenever you receive magical healing, your ability pool recovers by the same amount. Whenever you rest for a sufficient length of time, such as sleeping, your ability pools for all stats are completely replenished.
 
 \subsection{Actions}
 At the start of combat, all combatants are dealt a number of cards equal to their AGI rank. Each card represents an action point (AP). AP are the number of actions that a character can take in a round. Actions can be used for a variety of things such as making an attack, using a class skill, moving more than 1 meter, and much more.
